@@ -9,6 +9,7 @@
 
 #include "Event.h"
 #include "Queue.h"
+#include "random.h"
 
 using namespace std;
 
