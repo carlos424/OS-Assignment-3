@@ -17,6 +17,13 @@ int rear = 0;
 int front = -1;
 int numberOfProc = 0;
 
+int startTime;
+int totalDuration;
+int remainingDuration;
+int avgBurst;
+int nextBurst;
+int IOBurst;
+
 int Queue::size()
 {
 	return numberOfProc;
@@ -24,7 +31,7 @@ int Queue::size()
 
 void Queue::insertProc(Event* newProc)
 {
-	if(numberOfProc == 20)
+	if(numberOfProc == 100)
 	{
 		//cout << "Queue Full!" << endl;
 	}
@@ -34,9 +41,9 @@ void Queue::insertProc(Event* newProc)
 
 		//insert it into our data structure
 		tree[rear] = newProc;
-		rear = (rear + 1 )%20;
+		rear = (rear + 1 )%100;
 		numberOfProc++;
-
+	
 		
 		
 		
@@ -56,7 +63,7 @@ Event* Queue::removeProc()
 	else
 	{
 		Event* highest = tree[front];
-		front = (front+1)%20;		
+		front = (front+1)%100;		
 	
 		numberOfProc--;
 		return highest;
@@ -81,7 +88,7 @@ void Queue::display()
 		for (int i = 0;i<numberOfProc ;i++ )
 		{
 			cout << tree[x]->getId() << "|" << tree[x]->getTime() << "|" << tree[x]->getType() << endl;
-			x = (x+1)%20;
+			x = (x+1)%100;
 		}
 	}
 
@@ -115,7 +122,7 @@ Event* Queue::removeRandProc(int i)
 		Event* removed = tree[front + i];
 
 		tree[front + i] = tree[front];
-		front = (front+1)%20;	
+		front = (front+1)%100;	
 		
 		numberOfProc--;
 		return removed;
@@ -142,6 +149,30 @@ bool Queue::inQueue(Event* temp)
 	return false;
 }
 
+int Queue::getStartTime()
+{
+	return startTime;
+}
+int Queue::getTotalDuration()
+{
+	return totalDuration;
+}
+int Queue::getRemainingDuration()
+{
+	return remainingDuration;
+}
+int Queue::getAvgBurst()
+{
+	return avgBurst;
+}
+int Queue::getNextBurst()
+{
+	return nextBurst;
+}
+int Queue::getIOBurst()
+{
+	return IOBurst;
+}
 
 
 
@@ -149,5 +180,4 @@ bool Queue::inQueue(Event* temp)
 
 
 #endif
-
 

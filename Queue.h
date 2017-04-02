@@ -22,7 +22,14 @@ class Queue
 		int numberOfProc;
 		int front;
 		int rear;
-		Event* tree[20];
+		Event* tree[100];
+		
+		int startTime;
+		int totalDuration;
+		int remainingDuration;
+		int avgBurst;
+		int nextBurst;
+		int IOBurst;
 	
 	public:
 		int size();
@@ -33,8 +40,12 @@ class Queue
 		Event* removeRandProc(int i);
 		bool inQueue(Event* temp);
 		
-	
+		int getStartTime();
+		int getTotalDuration();
+		int getRemainingDuration();
+		int getAvgBurst();
+		int getNextBurst();
+		int getIOBurst();
 };
 
 #endif
-
