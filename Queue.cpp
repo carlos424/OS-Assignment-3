@@ -36,7 +36,7 @@ void Queue::insertProc(Event* newProc)
 		tree[rear] = newProc;
 		rear = (rear + 1 )%20;
 		numberOfProc++;
-		sort();
+
 		
 		
 		
